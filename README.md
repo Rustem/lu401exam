@@ -22,13 +22,13 @@ Channel capacity is the tightest upper bound on the rate of information that can
 
 `C` is measured in bits per second if the logarithm is taken in base 2, or nats per second if the natural logarithm is used, assuming `B` is in hertz.
 
-![](./src/cc-b.png)
+![Channel capacity](./src/cc-b.png)
 
 `P` is average received power. `N` is noise power spectral density. `P/WN` is received SNR.
 
-![](./src/snr-a.png)
+![Signal to noise ratio](./src/snr-a.png)
 
-![](./src/snr-b.png)
+![Signal to noise in dB](./src/snr-b.png)
 
 
 ## Pulse code modulation
