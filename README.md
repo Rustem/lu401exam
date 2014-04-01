@@ -10,9 +10,33 @@ lu401exam
 5. [ASK modulation](#ask-modulation)
 6. [Common scheme](#common-scheme)
 
-# Channel capacity calculation
+## Channel capacity calculation
 
-# Pulse code modulation
+Channel capacity is the tightest upper bound on the rate of information that can be reliably transmitted over a communications channel.
+
+![](./src/cc-a.png)
+
+`S/N` is signal to noise ratio (ratio of signal power to noise power).
+
+`B` Hz bandwidth.
+
+`C` is measured in bits per second if the logarithm is taken in base 2, or nats per second if the natural logarithm is used, assuming `B` is in hertz.
+
+![](./src/cc-b.png)
+
+`P` is average received power. `N` is noise power spectral density. `P/WN` is received SNR.
+
+![](./src/snr-a.png)
+
+![](./src/snr-b.png)
+
+
+## Pulse code modulation
+
+Pulse code modulation (PCM) is a digital representation of an analog signal that takes samples of the amplitude of the analog signal at regular intervals. The sampled analog data is changed to, and then represented by, binary data.
+
+PCM requires a vey accurate clock.
+
 The PCM process includes three steps:
 1. Sampling
 2. Quantisation
@@ -46,9 +70,19 @@ The last 4 bits, shown as XXXX, indicate exactly where in a particular segment t
 
 ![PCM u](./src/pcm-u.png)
 
-# Matched filter
+## Matched filter
 
-# Adaptive quantiser
+Matched filter is obtained by correlating a known signal with unknown signal to detect the presence of pattern in the unknown signal.
+
+Matched filter is obtained by correlating a known signal with unknown signal to detect the presence of pattern in the unknown signal.
+
+![Matched filter](./src/matched-filter.png)
+
+The matched filter is used in communications. that sends binary messages from the transmitter to the receiver across a noisy channel, a matched filter used to detect the transmitted pulses in the noisy received signal.
+
+![Matched filter example](./src/matched-filter-example.jpg)
+
+## Adaptive quantiser
 Quantiser approximates a continuous signal `x(t)` with a discrete signal `xQ(t)` in order to get a smaller set of input values. It is also an essential aspect of analogue-to-digital conversion.
 
 Quantisation > Scalar > Adaptive (Forward "AQF" and Backward "AQB").
@@ -75,7 +109,7 @@ There are 2 types of Variance Estimation: _Block Variance Estimation_ and _Recur
 
 Here `α` is forgetting factor in range `0 < α < 1` and typically near to 1.
 
-# ASK modulation
+## ASK modulation
 
 Modulation is a process of conveying a message e.g. a digital bit stream inside another signal that can be physically transmitted.
 
@@ -89,4 +123,6 @@ __Advantages:__ simple / inexpensive modulation and demodulation.
 
 __Disadvantages:__ it is linear and to atmospheric noise, distortion, propagation condition on different routes. Thus it requires excessive bandwidth and is therefore wastes power.
 
-# Common scheme
+## Common scheme
+
+![General scheme](./src/general-scheme.gif)
