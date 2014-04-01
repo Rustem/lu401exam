@@ -10,6 +10,44 @@ lu401exam
 5. [ASK modulation](#ask-modulation)
 6. [Common scheme](#common-scheme)
 
+# Channel capacity calculation
+
+# Pulse code modulation
+The PCM process includes three steps:
+1. Sampling
+2. Quantisation
+3. Coding
+
+In the sampling process, the magnitude of the analog signal is sampled regularly at uniform intervals. The obtained values are called samples.
+
+![PCM sampling](./src/pcm-sampling.png)
+
+Quantisation is the process of converting the obtained samples into discrete digital values. The most basic type of quantisation is called uniform quantisation.
+
+In an uniform quantisation, the vertical axis, which represents the amplitude, is divided into equal sized steps. As shown in the following figure, the range between 1 volt and -1 volt is divided into 16 steps, each step represents 0.125 volt.
+
+![PCM quantisation](./src/pcm-quantisation.png)
+
+In non-uniform quantisation process, the steps are not of equal size. Small steps are used for small signal values and large steps for large values. The purpose of doing so is to achieve that the signal-to-noise ratio is nearly independent of the signal level.
+
+This is done by favouring low-level voice over higher-level voice. In other words, more code groups are assigned to speech at low levels than at the higher levels, progressively more as the level reduces.
+
+There are two types of non-uniform quantisation methods in popular use today. They are the A-law and the u-law. Let's first look at the A-law.
+
+![PCM A](./src/pcm-a.png)
+
+We can see that the curve consists of linear piecewise segments, seven above and seven below the origin. The segment just above and the segment just below the origin consists of two linear segments. Counting the collinear elements by the origin, there are 16 segments. Each segment has 16 8-bit PCM codes assigned. These are the codewords that identify the voltage level of a sample at some moment in time.
+
+Each codeword, often called a PCM "word", consists of 8 bits. The first bit tells the receiver if the sample is a positive or negative voltage. We can see that all PCM words above the origin start with a binary 1, and those below the origin start with a binary 0.
+
+The next 3 bits in sequence identify the segment. There are eight segments above the origin and eight below the origin.
+
+The last 4 bits, shown as XXXX, indicate exactly where in a particular segment that voltage line is located.
+
+![PCM u](./src/pcm-u.png)
+
+# Matched filter
+
 # Adaptive quantiser
 Quantiser approximates a continuous signal `x(t)` with a discrete signal `xQ(t)` in order to get a smaller set of input values. It is also an essential aspect of analogue-to-digital conversion.
 
@@ -36,3 +74,19 @@ There are 2 types of Variance Estimation: _Block Variance Estimation_ and _Recur
 ![Recursive variance estimation](./src/recursive-variance-estimation.png)
 
 Here `α` is forgetting factor in range `0 < α < 1` and typically near to 1.
+
+# ASK modulation
+
+Modulation is a process of conveying a message e.g. a digital bit stream inside another signal that can be physically transmitted.
+
+ASK modulation is based on amplitude shift keying and uses a finite number of amplitudes.
+
+The binary symbol 1 is represented by transmitting a fixed-amplitude carrier wave and fixed frequency for a bit duration of `T` seconds. If the signal value is 1 then the carrier signal will be transmitted; otherwise, a signal value of 0 will not be transmitted.
+
+PSD (Power Spectral Density) helps to determine how the strength of a signal is distributed in the frequency domain, relative to the strengths of other ambient signals. E.g. for carrier signal `sin(2π100t)` there will be a peak around frequency of 100 Hz.
+
+__Advantages:__ simple / inexpensive modulation and demodulation.
+
+__Disadvantages:__ it is linear and to atmospheric noise, distortion, propagation condition on different routes. Thus it requires excessive bandwidth and is therefore wastes power.
+
+# Common scheme
