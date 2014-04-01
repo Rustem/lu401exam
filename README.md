@@ -28,7 +28,7 @@ Channel capacity is the tightest upper bound on the rate of information that can
 
 ![Signal to noise ratio](./src/snr-a.png)
 
-![Signal to noise in dB](./src/snr-b.png)
+![Signal to noise in dB](./src/snr.png)
 
 
 ## Pulse code modulation
